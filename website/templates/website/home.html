@@ -1,0 +1,44 @@
+ {% extends "base.html" %}
+
+ {% load staticfiles %}
+
+ {% block title %}IUB Chinese Calligraphy Club (3C) - Indiana University Bloomington{% endblock %}
+ {% block decription %}IUB Chinese Calligraphy Club (3C) is a student organization at Indiana University Bloomington, aiming to introduce Chinese Calligraphy culture among campus.{% endblock %}
+
+ {% block content %}
+        <div class="centerContainer">
+          <div id="leftContainer" class="fl">
+            <h3 class="sectionTitle">latest <span><a href="{% url 'news' %}" style="color: white;">news</a></span></h3>
+            {% if latest_news_list %}
+                <ul id="newsList">
+                {% for news in latest_news_list %}
+                    <li>
+                        <span>{{ news.pub_date }}</span>
+                        <h3><a href="/news/{{ news.id }}/">{{ news.news_title }}</a></h3>
+                        <p>{{ news.news_body|removetags:"iframe embed script p span br"|truncatechars:90 }}</p>
+                        <a href="/news/{{ news.id }}/" class="readMoreLink">Read more</a>
+                    </li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No news is available.</p>
+            {% endif %}
+          </div>
+          <div id="rightContainer" class="fr">
+            <h3 class="sectionTitle"><span>Welcome</span></h3>
+            <p>IUB Chinese Calligraphy Club (3C) is a student organization at Indiana University Bloomington, aiming to introduce Chinese Calligraphy culture among campus, build up
+                a communicative environment to learn and practice calligraphy, and provide opportunities for calligraphy lovers to share calligraphy work and experience with each
+                other.</p>
+            <p><strong>About us in a short video: </strong></p>	    
+	    
+            <video id="intro" class="video-js vjs-default-skin" controls
+             preload="auto" width="550" height="309.375" poster="{% static 'img/video.webp' %}"
+             data-setup="{}">
+             <source src="https://drive.google.com/uc?export=download&id=0B2yInp4p8h-OM25UWEFONExZazQ" type='video/mp4'>
+             <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://go.iu.edu/tsI" target="_blank">supports HTML5 video</a></p>
+            </video>
+	    
+
+          </div>
+        </div>
+ {% endblock %}

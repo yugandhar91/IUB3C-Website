@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}{{ news.news_title }} - IUB Chinese Calligraphy Club (3C) - Indiana University Bloomington{% endblock %}
+{% block description %}{{ news.news_body|removetags:"p spam br"|truncatechars:25 }}{% endblock %}
+
+{% block head %}
+	<script type="text/javascript">var switchTo5x=true;</script>
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({publisher: "39040716-8d05-4780-b302-dedd1aada29a", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>
+
+{% if news.flickr != '0' %}
+        <!-- load Galleria -->
+        <script src="{% static 'js/galleria.min.js' %}"></script>
+
+        <!-- load flickr plugin -->
+        <script src="{% static 'galleria/plugins/flickr/galleria.flickr.min.js' %}"></script>
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+<div class="centerContainer">
+    <h1 class="sectionTitle">{{ news.news_title|safe }}</h1>
+    <small><br />{{ news.pub_date }}</small>
+    <br /><br />
+    {{ news.news_body|safe }}
+    <br /><br />
+    {% if news.flickr != '0' %}
+    <div id="gallery" style="width: 960px; height: 540px;"></div>
+    <script>
+
+    // Load the classic theme
+    Galleria.loadTheme('{% static "galleria/themes/twelve/galleria.twelve.min.js" %}');
+
+    // Initialize Galleria
+    Galleria.run('#gallery', {
+
+        // flickr set for "galleria"
+        flickr: 'set:{{ news.flickr }}',
+        
+        flickrOptions: {
+            // sort by date-posted
+            sort: 'date-posted-asc',
+	    max: 200
+        },
+
+	imageCrop: false
+    });
+    </script>
+    <br /><br />
+    {% endif %}
+    <span class='st_facebook_hcount' displayText='Facebook'></span>
+    <span class='st_twitter_hcount' displayText='Tweet'></span>
+    <span class='st_linkedin_hcount' displayText='LinkedIn'></span>
+    <span class='st_pinterest_hcount' displayText='Pinterest'></span>
+    <span class='st_email_hcount' displayText='Email'></span>
+</div>
+{% endblock %}

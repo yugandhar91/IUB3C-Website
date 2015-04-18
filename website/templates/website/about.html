@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}About IUB Chinese Calligraphy Club - Indiana University Bloomington{% endblock %}
+{% block description %}A brief about page for IUB Chinese Calligraphy Club (3C) at Indiana University Bloomington{% endblock %}
+
+{% block content %}
+<div class="centerContainer">
+    <h1 class="sectionTitle">About IUB 3C</h1>
+    <p>IUB Chinese Calligraphy Club (3C) is a student organization at Indiana University Bloomington, aiming to introduce Chinese 
+Calligraphy culture among campus, build up a communicative environment to learn and practice calligraphy, and provide opportunities 
+for calligraphy lovers to share calligraphy work and experience with each other.</p>
+    <h1 class="sectionTitle">Board Members</h1>
+    <br />
+    <table border="0" width="960px">
+	<tr>
+	    <td width="95px" style="text-align: right;"><img src="{% static 'board/xinliao.png' %}" /></td>
+	    <td style="text-align: left; padding-left: 10px;">President 廖忻 <br />xinliao@indiana.edu</td>
+	</tr>
+	<tr>
+            <td width="95px" style="text-align: right;"><img src="{% static 'board/yangze.png' %}" /></td>
+            <td style="text-align: left; padding-left: 10px;">VP of Mentoring 杨泽莹 <br />yangze@indiana.edu</td>
+        </tr>
+	<tr>
+            <td width="95px" style="text-align: right;"><img src="{% static 'board/yaxtang.png' %}" /></td>
+            <td style="text-align: left; padding-left: 10px;">VP of Activity 唐雅歆 <br />yaxtang@indiana.edu</td>
+        </tr>
+	<tr>
+            <td width="95px" style="text-align: right;"><img src="{% static 'board/xu50.png' %}" /></td>
+            <td style="text-align: left; padding-left: 10px;">VP of Finance 徐晨 <br />xu50@indiana.edu</td>
+        </tr>
+	<tr>
+            <td width="95px" style="text-align: right;"><img src="{% static 'board/wl20.png' %}" /></td>
+            <td style="text-align: left; padding-left: 10px;">VP of Marketing 李唯 <br />wl20@indiana.edu</td>
+        </tr>
+	<tr>
+            <td width="95px" style="text-align: right;"><img src="{% static 'board/li412.png' %}" /></td>
+            <td style="text-align: left; padding-left: 10px;">VP of Treasury 李佼远 <br />li412@indiana.edu</td>
+        </tr>
+	<tr>
+            <td width="95px" style="text-align: right;"><img src="{% static 'board/langsong.png' %}" /></td>
+            <td style="text-align: left; padding-left: 10px;">VP of Secretary 宋朗 <br />langsong@indiana.edu</td>
+        </tr>
+
+    </table>
+</div>
+{% endblock %}

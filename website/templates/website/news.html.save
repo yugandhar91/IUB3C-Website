@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Latest News - IUB Chinese Calligraphy Club (3C) - Indiana University Bloomington{% endblock %}
+{% block description %}Latest happenings at IUB Chinese Calligraphy Club (3C), Indiana University Bloomington.{% endblock %}
+
+{% block content %}
+<div class="centerContainer">
+<h1>Latest News</h1>
+<br />
+{% if news %}
+<ul id="newsList">
+    {% for newsitem in news %}
+    <li>
+        <span>{{ newsitem.pub_date }}</span>
+        <h3><a href="/news/{{ newsitem.id }}/">{{ newsitem.news_title }}</a></h3>
+        <p>{{ newsitem.news_body|removetags:"p span br"|truncatechars:180 }}</p>
+        <a href="/news/{{ newsitem.id }}/" class="readMoreLink">Read more</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<div class="pagination">
+    <span class="step-links">
+	{% if news.has_previous %}
+	    <a href="?page={{ news.previous_page_number }}">Previous</a>
+	{% endif %}
+
+        <span class="current">
+    	    Page {{ news.number }} of {{ news.paginator.num_pages }}
+        </span>
+
+        {% if news.has_next %}
+	    <a href="?page={{ news.next_page_number }}">Next</a>
+        {% endif %}
+    </span>
+{% else %}
+<p>No latest news found.</p>
+{% endif %}
+</div>
+{% endblock %}

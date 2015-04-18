@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}Designs - IUB Chinese Calligraphy Club (3C) - Indiana University Bloomington{% endblock %}
+{% block description %}Designs by the member of IUB Chinese Calligraphy Club (3C) at Indiana University Bloomington{% endblock %}
+
+{% block head %}
+	<!-- load Galleria -->
+        <script src="{% static 'js/galleria.min.js' %}"></script>
+
+        <!-- load flickr plugin -->
+        <script src="{% static 'galleria/plugins/flickr/galleria.flickr.min.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="centerContainer">
+    <h1 class="sectionTitle">Gallery</h1>
+    <br /><br />
+    <div id="gallery" style="width: 960px; height: 540px;"></div>
+</div>
+
+<script>
+
+    // Load the classic theme
+    Galleria.loadTheme('{% static "galleria/themes/twelve/galleria.twelve.min.js" %}');
+
+    // Initialize Galleria
+    Galleria.run('#gallery', {
+
+        // flickr set for "galleria"
+        flickr: 'set:72157651816650161',
+        
+        flickrOptions: {
+            // sort by date-posted
+            sort: 'date-posted-asc',
+	    max: 200
+        },
+
+	imageCrop: false
+    });
+</script>
+
+{% endblock %}
